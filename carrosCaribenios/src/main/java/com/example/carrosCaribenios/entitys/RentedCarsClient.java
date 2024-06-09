@@ -3,6 +3,7 @@ package com.example.carrosCaribenios.entitys;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,5 +16,5 @@ public class RentedCarsClient {
     @OneToOne(mappedBy = "carrosRentados")
     private Client cliente;
     @OneToMany(mappedBy = "rentadoCliente")
-    private Set<Rent> carrosRentado;
+    private List<Rent> carrosRentado;
 }
