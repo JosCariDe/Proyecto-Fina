@@ -12,6 +12,8 @@ public class Rent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
+    private String ciudad;
     @OneToOne
     @JoinColumn(name = "carro_id",
                 referencedColumnName = "id")
