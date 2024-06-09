@@ -12,6 +12,7 @@ public class ClientData {
     private Long id;
     private String nombre;
     private String apellido;
+    @Column(nullable = false)
     private Integer cedula;
     private String correo;
     private Integer numeroCelular;

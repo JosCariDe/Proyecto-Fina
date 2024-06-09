@@ -16,10 +16,12 @@ public class Rent {
     @JoinColumn(name = "carro_id",
                 referencedColumnName = "id")
     private Car carro;
+    @Column(nullable = false)
     private LocalDateTime fechaInicio;
+    @Column(nullable = false)
     private LocalDateTime fechaFinal;
+    @Column(nullable = false)
     private Float precio;
-    private Boolean rentado;
     @ManyToOne
     @JoinColumn(name = "rentado_id",
                 referencedColumnName = "id")
