@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface RentRepository extends JpaRepository<Rent, Long> {
     @Query("SELECT r FROM Rent r WHERE r.ciudad = :ciudad AND r.fechaInicio <= :fechaFinal AND r.fechaFinal >= :fechaInicio")
-    List<Rent> findAvailableCars(@Param("ciudad") String ciudad, @Param("fechaInicio") LocalDateTime fechaInicio, @Param("fechaFinal") LocalDateTime fechaFinal);
+    List<Rent> findCarsFilters(@Param("ciudad") String ciudad, @Param("fechaInicio") LocalDateTime fechaInicio, @Param("fechaFinal") LocalDateTime fechaFinal);
 }

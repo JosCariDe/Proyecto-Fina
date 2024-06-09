@@ -1,11 +1,9 @@
 package com.example.carrosCaribenios.dto.rentedCarsClient;
 
 import com.example.carrosCaribenios.dto.client.ClientDto;
-import com.example.carrosCaribenios.dto.clientData.ClientDataDto;
 import com.example.carrosCaribenios.dto.rent.RentDto;
 import com.example.carrosCaribenios.dto.rent.RentToSaveDto;
 import com.example.carrosCaribenios.entitys.Client;
-import com.example.carrosCaribenios.entitys.ClientData;
 import com.example.carrosCaribenios.entitys.Rent;
 import com.example.carrosCaribenios.entitys.RentedCarsClient;
 import java.util.ArrayList;
@@ -14,7 +12,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-09T17:31:09-0500",
+    date = "2024-06-09T17:53:09-0500",
     comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.8.jar, environment: Java 21.0.3 (Amazon.com Inc.)"
 )
 public class RentedCarsClientMapperImpl implements RentedCarsClientMapper {
@@ -92,24 +90,6 @@ public class RentedCarsClientMapperImpl implements RentedCarsClientMapper {
         return list;
     }
 
-    protected ClientData clientDataDtoToClientData(ClientDataDto clientDataDto) {
-        if ( clientDataDto == null ) {
-            return null;
-        }
-
-        ClientData clientData = new ClientData();
-
-        clientData.setId( clientDataDto.id() );
-        clientData.setNombre( clientDataDto.nombre() );
-        clientData.setApellido( clientDataDto.apellido() );
-        clientData.setCedula( clientDataDto.cedula() );
-        clientData.setCorreo( clientDataDto.correo() );
-        clientData.setNumeroCelular( clientDataDto.numeroCelular() );
-        clientData.setCliente( clientDtoToClient( clientDataDto.cliente() ) );
-
-        return clientData;
-    }
-
     protected Client clientDtoToClient(ClientDto clientDto) {
         if ( clientDto == null ) {
             return null;
@@ -118,8 +98,12 @@ public class RentedCarsClientMapperImpl implements RentedCarsClientMapper {
         Client client = new Client();
 
         client.setId( clientDto.id() );
-        client.setDatosCliente( clientDataDtoToClientData( clientDto.datosCliente() ) );
         client.setCarrosRentados( toRentedCarsClient( clientDto.carrosRentados() ) );
+        client.setNombre( clientDto.nombre() );
+        client.setApellido( clientDto.apellido() );
+        client.setCedula( clientDto.cedula() );
+        client.setCorreo( clientDto.correo() );
+        client.setNumeroCelular( clientDto.numeroCelular() );
 
         return client;
     }
@@ -187,24 +171,6 @@ public class RentedCarsClientMapperImpl implements RentedCarsClientMapper {
         return list1;
     }
 
-    protected ClientDataDto clientDataToClientDataDto(ClientData clientData) {
-        if ( clientData == null ) {
-            return null;
-        }
-
-        ClientDataDto.ClientDataDtoBuilder clientDataDto = ClientDataDto.builder();
-
-        clientDataDto.id( clientData.getId() );
-        clientDataDto.nombre( clientData.getNombre() );
-        clientDataDto.apellido( clientData.getApellido() );
-        clientDataDto.cedula( clientData.getCedula() );
-        clientDataDto.correo( clientData.getCorreo() );
-        clientDataDto.numeroCelular( clientData.getNumeroCelular() );
-        clientDataDto.cliente( clientToClientDto( clientData.getCliente() ) );
-
-        return clientDataDto.build();
-    }
-
     protected ClientDto clientToClientDto(Client client) {
         if ( client == null ) {
             return null;
@@ -213,7 +179,11 @@ public class RentedCarsClientMapperImpl implements RentedCarsClientMapper {
         ClientDto.ClientDtoBuilder clientDto = ClientDto.builder();
 
         clientDto.id( client.getId() );
-        clientDto.datosCliente( clientDataToClientDataDto( client.getDatosCliente() ) );
+        clientDto.nombre( client.getNombre() );
+        clientDto.apellido( client.getApellido() );
+        clientDto.cedula( client.getCedula() );
+        clientDto.correo( client.getCorreo() );
+        clientDto.numeroCelular( client.getNumeroCelular() );
         clientDto.carrosRentados( toRentedCarsClientDTO( client.getCarrosRentados() ) );
 
         return clientDto.build();

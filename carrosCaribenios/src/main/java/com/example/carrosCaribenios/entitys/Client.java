@@ -11,11 +11,15 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn( name = "clienteDatos_id" ,
-                referencedColumnName = "id")
-    private ClientData datosCliente;
-    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "carrosRentados",
                 referencedColumnName = "id")
     private RentedCarsClient carrosRentados;
+    @Column(nullable = false)
+    private String nombre;
+    @Column(nullable = false)
+    private String apellido;
+    @Column(nullable = false)
+    private Integer cedula;
+    private String correo;
+    private Integer numeroCelular;
 }
