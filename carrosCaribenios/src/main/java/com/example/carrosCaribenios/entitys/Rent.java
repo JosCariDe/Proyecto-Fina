@@ -13,11 +13,11 @@ public class Rent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
+    private String modelo;
+    @Column(nullable = false)
+    private String marca;
+    @Column(nullable = false)
     private String ciudad;
-    @OneToOne
-    @JoinColumn(name = "carro_id",
-                referencedColumnName = "id")
-    private Car carro;
     @Column(nullable = false)
     private LocalDateTime fechaInicio;
     @Column(nullable = false)

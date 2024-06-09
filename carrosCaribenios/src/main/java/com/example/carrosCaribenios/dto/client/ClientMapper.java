@@ -2,6 +2,7 @@ package com.example.carrosCaribenios.dto.client;
 
 import com.example.carrosCaribenios.entitys.Client;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -12,9 +13,10 @@ public interface ClientMapper {
 
     Client clientDtoToClient(ClientDto clientDto);
 
+    @Mapping(target = "carrosRentados", ignore = true)
     Client clientToSaveDtoToClient(ClientToSaveDto clientToSaveDto);
 
-    ClientDto clientToClientDto(ClientDto clientDto);
+    ClientDto clientToClientDto(Client client);
 
     List<Client> clientsDtoToClients(List<ClientDto> clientDtoList);
 

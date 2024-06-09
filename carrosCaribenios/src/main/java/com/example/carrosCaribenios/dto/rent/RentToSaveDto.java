@@ -1,14 +1,17 @@
 package com.example.carrosCaribenios.dto.rent;
 
-import com.example.carrosCaribenios.dto.car.CarDto;
 import com.example.carrosCaribenios.dto.rentedCarsClient.RentedCarsClientDto;
+import lombok.Builder;
 
 import java.time.LocalDateTime;
 
+@Builder
 public record RentToSaveDto(
         Long id,
         String ciudad,
-        CarDto carro,
+        String modelo,
+
+        String marca,
         LocalDateTime fechaInicio,
         LocalDateTime fechaFinal,
         Float precio

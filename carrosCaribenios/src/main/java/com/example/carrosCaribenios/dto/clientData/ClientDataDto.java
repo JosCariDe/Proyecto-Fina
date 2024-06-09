@@ -1,9 +1,10 @@
 package com.example.carrosCaribenios.dto.clientData;
 
 import com.example.carrosCaribenios.dto.client.ClientDto;
+import lombok.Builder;
 import lombok.Data;
 
-@Data
+@Builder
 public record ClientDataDto(
         Long id,
         String nombre,
