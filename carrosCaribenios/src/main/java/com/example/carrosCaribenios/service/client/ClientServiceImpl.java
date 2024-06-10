@@ -3,8 +3,12 @@ package com.example.carrosCaribenios.service.client;
 import com.example.carrosCaribenios.dto.client.ClientDto;
 import com.example.carrosCaribenios.dto.client.ClientMapper;
 import com.example.carrosCaribenios.dto.client.ClientToSaveDto;
+import com.example.carrosCaribenios.dto.rent.RentDto;
+import com.example.carrosCaribenios.dto.rent.RentMapper;
 import com.example.carrosCaribenios.entitys.Client;
+import com.example.carrosCaribenios.entitys.Rent;
 import com.example.carrosCaribenios.exception.ClientNotFoundException;
+import com.example.carrosCaribenios.exception.RentNotFoundException;
 import com.example.carrosCaribenios.repository.ClientRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -68,7 +72,7 @@ public class ClientServiceImpl implements ClientService{
             clienteInDb.setNumeroCelular(clientDto.numeroCelular());
             Client clientSave = clientRepository.save(clienteInDb);
 
-            return ClientMapper.INSTANCE.clientToClientDto(clienteInDb);
+            return ClientMapper.INSTANCE.clientToClientDto(clientSave);
         }).orElseThrow(() -> new ClientNotFoundException("Cliente No Encontrado"));
     }
 
@@ -90,5 +94,15 @@ public class ClientServiceImpl implements ClientService{
     public List<ClientDto> getAllClientes() {
         List<Client> clients = clientRepository.findAll();
         return ClientMapper.INSTANCE.clientsToClientsDto(clients);
+    }
+
+    @Override
+    public List<RentDto> findCarrosRentadosById(Long id) throws ClientNotFoundException {
+        clientRepository.findById(id).orElseThrow(() -> new ClientNotFoundException("Cliente No Encontrado"));
+        List<Rent> rents = clientRepository.findCarrosRentadosById(id);
+        if (rents.isEmpty()) {
+            throw new RentNotFoundException("No se encontraron Coches para este cliente");
+        }
+        return RentMapper.INSTANCE.rentsToRentsDto(rents);
     }
 }

@@ -11,7 +11,6 @@ public record ClientToSaveDto(
         String apellido,
         Integer cedula,
         String correo,
-        Integer numeroCelular,
-        ClientDto cliente
+        Integer numeroCelular
 ) {
 }

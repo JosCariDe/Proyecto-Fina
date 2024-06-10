@@ -1,8 +1,10 @@
 package com.example.carrosCaribenios.entitys;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -10,6 +12,8 @@ import java.time.LocalDateTime;
 @Data
 @Table(name = "rentados")
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Rent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +24,10 @@ public class Rent {
     private String marca;
     @Column(nullable = false)
     private String ciudad;
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
     private LocalDateTime fechaInicio;
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
     private LocalDateTime fechaFinal;
     @Column(nullable = false)
@@ -29,5 +35,5 @@ public class Rent {
     @ManyToOne
     @JoinColumn(name = "rentado_id",
                 referencedColumnName = "id")
-    private RentedCarsClient rentadoCliente;
+    private Client rentadoCliente;
 }

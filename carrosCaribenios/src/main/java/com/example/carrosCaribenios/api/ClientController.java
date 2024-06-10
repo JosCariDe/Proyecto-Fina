@@ -2,6 +2,7 @@ package com.example.carrosCaribenios.api;
 
 import com.example.carrosCaribenios.dto.client.ClientDto;
 import com.example.carrosCaribenios.dto.client.ClientToSaveDto;
+import com.example.carrosCaribenios.dto.rent.RentDto;
 import com.example.carrosCaribenios.exception.ClientNotFoundException;
 import com.example.carrosCaribenios.service.client.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,5 +71,11 @@ public class ClientController {
     public ResponseEntity<List<ClientDto>> getAllClientes() {
         List<ClientDto> clients = clientService.getAllClientes();
         return new ResponseEntity<>(clients, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/rented-cars")
+    public ResponseEntity<List<RentDto>> findCarrosRentadosById(@PathVariable Long id) {
+        List<RentDto> rentedCars = clientService.findCarrosRentadosById(id);
+        return ResponseEntity.ok(rentedCars);
     }
 }

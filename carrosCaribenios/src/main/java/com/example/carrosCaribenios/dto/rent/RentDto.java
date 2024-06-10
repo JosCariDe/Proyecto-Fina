@@ -1,6 +1,6 @@
 package com.example.carrosCaribenios.dto.rent;
 
-import com.example.carrosCaribenios.dto.rentedCarsClient.RentedCarsClientDto;
+import com.example.carrosCaribenios.entitys.Client;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
@@ -14,6 +14,6 @@ public record RentDto(
         LocalDateTime fechaInicio,
         LocalDateTime fechaFinal,
         Float precio,
-        RentedCarsClientDto rentadoCliente
+        Client rentadoCliente
 ) {
 }

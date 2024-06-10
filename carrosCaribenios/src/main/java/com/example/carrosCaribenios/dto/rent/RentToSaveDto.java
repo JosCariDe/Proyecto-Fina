@@ -1,6 +1,5 @@
 package com.example.carrosCaribenios.dto.rent;
 
-import com.example.carrosCaribenios.dto.rentedCarsClient.RentedCarsClientDto;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
@@ -10,7 +9,6 @@ public record RentToSaveDto(
         Long id,
         String ciudad,
         String modelo,
-
         String marca,
         LocalDateTime fechaInicio,
         LocalDateTime fechaFinal,

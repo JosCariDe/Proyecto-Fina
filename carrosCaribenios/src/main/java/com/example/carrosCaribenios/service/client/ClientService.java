@@ -2,6 +2,7 @@ package com.example.carrosCaribenios.service.client;
 
 import com.example.carrosCaribenios.dto.client.ClientDto;
 import com.example.carrosCaribenios.dto.client.ClientToSaveDto;
+import com.example.carrosCaribenios.dto.rent.RentDto;
 import com.example.carrosCaribenios.exception.ClientNotFoundException;
 
 import java.util.List;
@@ -12,5 +13,7 @@ public interface ClientService {
     ClientDto buscarClientePorId(Long id) throws ClientNotFoundException;
     void removerCliente(Long id);
     List<ClientDto> getAllClientes();
+
+    List<RentDto> findCarrosRentadosById(Long id) throws ClientNotFoundException;
 
 }

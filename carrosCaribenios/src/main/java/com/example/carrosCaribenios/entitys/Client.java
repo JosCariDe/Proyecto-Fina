@@ -3,6 +3,8 @@ package com.example.carrosCaribenios.entitys;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Data
 @Builder
@@ -13,10 +15,8 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "carrosRentados",
-                referencedColumnName = "id")
-    private RentedCarsClient carrosRentados;
+    @OneToMany(mappedBy = "rentadoCliente")
+    private List<Rent> carrosRentados;
     @Column(nullable = false)
     private String nombre;
     @Column(nullable = false)

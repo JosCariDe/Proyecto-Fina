@@ -6,10 +6,12 @@ import com.example.carrosCaribenios.dto.rent.RentToSaveDto;
 import com.example.carrosCaribenios.entitys.Rent;
 import com.example.carrosCaribenios.exception.RentNotFoundException;
 import com.example.carrosCaribenios.repository.RentRepository;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -17,6 +19,30 @@ import java.util.List;
 public class RentServiceImpl implements RentService{
 
     private final RentRepository rentRepository;
+
+    @PostConstruct
+    public void init() {
+        // Crear 10 coches rentados
+        Rent rent1 = Rent.builder()
+                .precio(50.0F)
+                .fechaInicio(LocalDateTime.parse("2024-01-01T08:00:00"))
+                .fechaFinal(LocalDateTime.parse("2024-01-07T08:00:00"))
+                .ciudad("Ciudad1")
+                .marca("Toyota")
+                .modelo("Corolla")
+                .build();
+        Rent rent2 = Rent.builder()
+                .precio(60.0F)
+                .fechaInicio(LocalDateTime.parse("2024-01-02T08:00:00"))
+                .fechaFinal(LocalDateTime.parse("2024-01-08T08:00:00"))
+                .ciudad("Ciudad2")
+                .marca("Honda")
+                .modelo("Civic")
+                .build();
+        // Similar para los otros coches...
+
+        rentRepository.saveAll(Arrays.asList(rent1, rent2 /* , rent3, rent4, ..., rent10 */));
+    }
     @Override
     public RentDto guardarCarro(RentToSaveDto rentDto) {
         Rent rent = RentMapper.INSTANCE.rentToSaveDtoToRent(rentDto);
