@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface RentedCarsClientRepository extends JpaRepository<RentedCarsClient, Long> {
-    @Query("SELECT rcc FROM RentedCarsClient rcc WHERE rcc.cliente.id = :clientId")
-    List<RentedCarsClient> findRentedCarsByClientId(Long clientId);
+    @Query("SELECT r FROM Rent r JOIN r.rentadoCliente rc WHERE rc.cliente.id = :clientId")
+    List<Rent> findRentedCarsByClientId(Long clientId);
 }

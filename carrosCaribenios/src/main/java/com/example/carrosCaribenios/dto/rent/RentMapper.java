@@ -20,5 +20,7 @@ public interface RentMapper {
 
     List<Rent> rentsDtoToRents(List<RentDto> rentDtoList);
 
+    List<Rent> rentToSaveDtoToRents(List<RentToSaveDto> rentToSaveDtoList);
+
     List<RentDto> rentsToRentsDto(List<Rent> rentList);
 }
