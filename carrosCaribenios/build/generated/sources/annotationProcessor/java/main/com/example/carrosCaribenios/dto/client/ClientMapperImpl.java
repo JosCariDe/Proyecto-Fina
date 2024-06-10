@@ -11,8 +11,8 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-09T20:13:24-0500",
-    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.8.jar, environment: Java 21.0.1 (Oracle Corporation)"
+    date = "2024-06-10T12:50:04-0500",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.8.jar, environment: Java 21.0.3 (Amazon.com Inc.)"
 )
 public class ClientMapperImpl implements ClientMapper {
 
@@ -22,17 +22,17 @@ public class ClientMapperImpl implements ClientMapper {
             return null;
         }
 
-        Client client = new Client();
+        Client.ClientBuilder client = Client.builder();
 
-        client.setId( clientDto.id() );
-        client.setCarrosRentados( rentedCarsClientDtoToRentedCarsClient( clientDto.carrosRentados() ) );
-        client.setNombre( clientDto.nombre() );
-        client.setApellido( clientDto.apellido() );
-        client.setCedula( clientDto.cedula() );
-        client.setCorreo( clientDto.correo() );
-        client.setNumeroCelular( clientDto.numeroCelular() );
+        client.id( clientDto.id() );
+        client.carrosRentados( rentedCarsClientDtoToRentedCarsClient( clientDto.carrosRentados() ) );
+        client.nombre( clientDto.nombre() );
+        client.apellido( clientDto.apellido() );
+        client.cedula( clientDto.cedula() );
+        client.correo( clientDto.correo() );
+        client.numeroCelular( clientDto.numeroCelular() );
 
-        return client;
+        return client.build();
     }
 
     @Override
@@ -41,16 +41,16 @@ public class ClientMapperImpl implements ClientMapper {
             return null;
         }
 
-        Client client = new Client();
+        Client.ClientBuilder client = Client.builder();
 
-        client.setId( clientToSaveDto.id() );
-        client.setNombre( clientToSaveDto.nombre() );
-        client.setApellido( clientToSaveDto.apellido() );
-        client.setCedula( clientToSaveDto.cedula() );
-        client.setCorreo( clientToSaveDto.correo() );
-        client.setNumeroCelular( clientToSaveDto.numeroCelular() );
+        client.id( clientToSaveDto.id() );
+        client.nombre( clientToSaveDto.nombre() );
+        client.apellido( clientToSaveDto.apellido() );
+        client.cedula( clientToSaveDto.cedula() );
+        client.correo( clientToSaveDto.correo() );
+        client.numeroCelular( clientToSaveDto.numeroCelular() );
 
-        return client;
+        return client.build();
     }
 
     @Override
@@ -105,18 +105,18 @@ public class ClientMapperImpl implements ClientMapper {
             return null;
         }
 
-        Rent rent = new Rent();
+        Rent.RentBuilder rent = Rent.builder();
 
-        rent.setId( rentDto.id() );
-        rent.setModelo( rentDto.modelo() );
-        rent.setMarca( rentDto.marca() );
-        rent.setCiudad( rentDto.ciudad() );
-        rent.setFechaInicio( rentDto.fechaInicio() );
-        rent.setFechaFinal( rentDto.fechaFinal() );
-        rent.setPrecio( rentDto.precio() );
-        rent.setRentadoCliente( rentedCarsClientDtoToRentedCarsClient( rentDto.rentadoCliente() ) );
+        rent.id( rentDto.id() );
+        rent.modelo( rentDto.modelo() );
+        rent.marca( rentDto.marca() );
+        rent.ciudad( rentDto.ciudad() );
+        rent.fechaInicio( rentDto.fechaInicio() );
+        rent.fechaFinal( rentDto.fechaFinal() );
+        rent.precio( rentDto.precio() );
+        rent.rentadoCliente( rentedCarsClientDtoToRentedCarsClient( rentDto.rentadoCliente() ) );
 
-        return rent;
+        return rent.build();
     }
 
     protected List<Rent> rentDtoListToRentList(List<RentDto> list) {
@@ -137,13 +137,13 @@ public class ClientMapperImpl implements ClientMapper {
             return null;
         }
 
-        RentedCarsClient rentedCarsClient = new RentedCarsClient();
+        RentedCarsClient.RentedCarsClientBuilder rentedCarsClient = RentedCarsClient.builder();
 
-        rentedCarsClient.setId( rentedCarsClientDto.id() );
-        rentedCarsClient.setCliente( clientDtoToClient( rentedCarsClientDto.cliente() ) );
-        rentedCarsClient.setCarrosRentado( rentDtoListToRentList( rentedCarsClientDto.carrosRentado() ) );
+        rentedCarsClient.id( rentedCarsClientDto.id() );
+        rentedCarsClient.cliente( clientDtoToClient( rentedCarsClientDto.cliente() ) );
+        rentedCarsClient.carrosRentado( rentDtoListToRentList( rentedCarsClientDto.carrosRentado() ) );
 
-        return rentedCarsClient;
+        return rentedCarsClient.build();
     }
 
     protected RentDto rentToRentDto(Rent rent) {

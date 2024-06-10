@@ -1,6 +1,7 @@
 package com.example.carrosCaribenios.entitys;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -8,6 +9,7 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @Table(name = "rentados")
+@Builder
 public class Rent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -6,14 +6,49 @@ import com.example.carrosCaribenios.dto.client.ClientToSaveDto;
 import com.example.carrosCaribenios.entitys.Client;
 import com.example.carrosCaribenios.exception.ClientNotFoundException;
 import com.example.carrosCaribenios.repository.ClientRepository;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class ClientServiceImpl implements ClientService{
+
+
+    @PostConstruct
+    public void init() {
+        // Crear 3 clientes
+        Client client1 = Client.builder()
+                .id(1L)
+                .cedula(12345678)
+                .numeroCelular(987654321)
+                .correo("juan.perez@example.com")
+                .nombre("Juan")
+                .apellido("Perez")
+                .build();
+        Client client2 = Client.builder()
+                .id(2L)
+                .cedula(87654321)
+                .numeroCelular(123456789)
+                .correo("maria.gomez@example.com")
+                .nombre("Maria")
+                .apellido("Gomez")
+                .build();
+        Client client3 = Client.builder()
+                .id(3L)
+                .cedula(11223344)
+                .numeroCelular(998877665)
+                .correo("luis.lopez@example.com")
+                .nombre("Luis")
+                .apellido("Lopez")
+                .build();
+
+        clientRepository.saveAll(Arrays.asList(client1, client2, client3));
+    }
+
 
     private final ClientRepository clientRepository;
     @Override

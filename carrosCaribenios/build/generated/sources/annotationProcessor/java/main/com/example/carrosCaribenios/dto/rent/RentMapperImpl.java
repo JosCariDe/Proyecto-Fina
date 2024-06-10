@@ -11,8 +11,8 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-09T23:03:55-0500",
-    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.8.jar, environment: Java 21.0.1 (Oracle Corporation)"
+    date = "2024-06-10T12:50:03-0500",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.8.jar, environment: Java 21.0.3 (Amazon.com Inc.)"
 )
 public class RentMapperImpl implements RentMapper {
 
@@ -22,18 +22,18 @@ public class RentMapperImpl implements RentMapper {
             return null;
         }
 
-        Rent rent = new Rent();
+        Rent.RentBuilder rent = Rent.builder();
 
-        rent.setId( rentDto.id() );
-        rent.setModelo( rentDto.modelo() );
-        rent.setMarca( rentDto.marca() );
-        rent.setCiudad( rentDto.ciudad() );
-        rent.setFechaInicio( rentDto.fechaInicio() );
-        rent.setFechaFinal( rentDto.fechaFinal() );
-        rent.setPrecio( rentDto.precio() );
-        rent.setRentadoCliente( rentedCarsClientDtoToRentedCarsClient( rentDto.rentadoCliente() ) );
+        rent.id( rentDto.id() );
+        rent.modelo( rentDto.modelo() );
+        rent.marca( rentDto.marca() );
+        rent.ciudad( rentDto.ciudad() );
+        rent.fechaInicio( rentDto.fechaInicio() );
+        rent.fechaFinal( rentDto.fechaFinal() );
+        rent.precio( rentDto.precio() );
+        rent.rentadoCliente( rentedCarsClientDtoToRentedCarsClient( rentDto.rentadoCliente() ) );
 
-        return rent;
+        return rent.build();
     }
 
     @Override
@@ -42,17 +42,17 @@ public class RentMapperImpl implements RentMapper {
             return null;
         }
 
-        Rent rent = new Rent();
+        Rent.RentBuilder rent = Rent.builder();
 
-        rent.setId( rentToSaveDto.id() );
-        rent.setModelo( rentToSaveDto.modelo() );
-        rent.setMarca( rentToSaveDto.marca() );
-        rent.setCiudad( rentToSaveDto.ciudad() );
-        rent.setFechaInicio( rentToSaveDto.fechaInicio() );
-        rent.setFechaFinal( rentToSaveDto.fechaFinal() );
-        rent.setPrecio( rentToSaveDto.precio() );
+        rent.id( rentToSaveDto.id() );
+        rent.modelo( rentToSaveDto.modelo() );
+        rent.marca( rentToSaveDto.marca() );
+        rent.ciudad( rentToSaveDto.ciudad() );
+        rent.fechaInicio( rentToSaveDto.fechaInicio() );
+        rent.fechaFinal( rentToSaveDto.fechaFinal() );
+        rent.precio( rentToSaveDto.precio() );
 
-        return rent;
+        return rent.build();
     }
 
     @Override
@@ -122,17 +122,17 @@ public class RentMapperImpl implements RentMapper {
             return null;
         }
 
-        Client client = new Client();
+        Client.ClientBuilder client = Client.builder();
 
-        client.setId( clientDto.id() );
-        client.setCarrosRentados( rentedCarsClientDtoToRentedCarsClient( clientDto.carrosRentados() ) );
-        client.setNombre( clientDto.nombre() );
-        client.setApellido( clientDto.apellido() );
-        client.setCedula( clientDto.cedula() );
-        client.setCorreo( clientDto.correo() );
-        client.setNumeroCelular( clientDto.numeroCelular() );
+        client.id( clientDto.id() );
+        client.carrosRentados( rentedCarsClientDtoToRentedCarsClient( clientDto.carrosRentados() ) );
+        client.nombre( clientDto.nombre() );
+        client.apellido( clientDto.apellido() );
+        client.cedula( clientDto.cedula() );
+        client.correo( clientDto.correo() );
+        client.numeroCelular( clientDto.numeroCelular() );
 
-        return client;
+        return client.build();
     }
 
     protected RentedCarsClient rentedCarsClientDtoToRentedCarsClient(RentedCarsClientDto rentedCarsClientDto) {
@@ -140,13 +140,13 @@ public class RentMapperImpl implements RentMapper {
             return null;
         }
 
-        RentedCarsClient rentedCarsClient = new RentedCarsClient();
+        RentedCarsClient.RentedCarsClientBuilder rentedCarsClient = RentedCarsClient.builder();
 
-        rentedCarsClient.setId( rentedCarsClientDto.id() );
-        rentedCarsClient.setCliente( clientDtoToClient( rentedCarsClientDto.cliente() ) );
-        rentedCarsClient.setCarrosRentado( rentsDtoToRents( rentedCarsClientDto.carrosRentado() ) );
+        rentedCarsClient.id( rentedCarsClientDto.id() );
+        rentedCarsClient.cliente( clientDtoToClient( rentedCarsClientDto.cliente() ) );
+        rentedCarsClient.carrosRentado( rentsDtoToRents( rentedCarsClientDto.carrosRentado() ) );
 
-        return rentedCarsClient;
+        return rentedCarsClient.build();
     }
 
     protected ClientDto clientToClientDto(Client client) {

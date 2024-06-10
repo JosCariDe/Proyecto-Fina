@@ -1,10 +1,14 @@
 package com.example.carrosCaribenios.entitys;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Entity
 @Data
+@Builder
 @Table(name = "clientes")
 public class Client {
     @Id
@@ -22,4 +26,5 @@ public class Client {
     private Integer cedula;
     private String correo;
     private Integer numeroCelular;
+
 }
