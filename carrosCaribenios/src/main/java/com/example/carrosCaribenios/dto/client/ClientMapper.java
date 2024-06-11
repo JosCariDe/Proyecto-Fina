@@ -18,6 +18,11 @@ public interface ClientMapper {
 
     ClientDto clientToClientDto(Client client);
 
+    @Mapping(target = "carrosRentados", ignore = true)
+    ClientDto clientToSaveDtoToClientDto(ClientToSaveDto clientToSaveDto);
+
+    ClientToSaveDto clientToClienToSaveDto(Client client);
+
     List<Client> clientsDtoToClients(List<ClientDto> clientDtoList);
 
     List<ClientDto> clientsToClientsDto(List<Client> clientList);

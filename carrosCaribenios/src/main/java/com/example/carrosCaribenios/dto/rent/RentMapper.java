@@ -18,6 +18,11 @@ public interface RentMapper {
 
     RentDto rentToRentDto(Rent rent);
 
+    @Mapping(target = "rentadoCliente", ignore = true)
+    RentDto rentToSaveDtoToRentDto(RentToSaveDto rentToSaveDto);
+
+    RentToSaveDto rentToRentToSaveDto(Rent rent);
+
     List<Rent> rentsDtoToRents(List<RentDto> rentDtoList);
 
     List<Rent> rentToSaveDtoToRents(List<RentToSaveDto> rentToSaveDtoList);

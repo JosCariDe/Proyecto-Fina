@@ -5,6 +5,7 @@ import com.example.carrosCaribenios.dto.client.ClientMapper;
 import com.example.carrosCaribenios.dto.client.ClientToSaveDto;
 import com.example.carrosCaribenios.dto.rent.RentDto;
 import com.example.carrosCaribenios.dto.rent.RentMapper;
+import com.example.carrosCaribenios.dto.rent.RentToSaveDto;
 import com.example.carrosCaribenios.entitys.Client;
 import com.example.carrosCaribenios.entitys.Rent;
 import com.example.carrosCaribenios.exception.ClientNotFoundException;
@@ -12,6 +13,7 @@ import com.example.carrosCaribenios.exception.RentNotFoundException;
 import com.example.carrosCaribenios.repository.ClientRepository;
 import com.example.carrosCaribenios.repository.RentRepository;
 import jakarta.annotation.PostConstruct;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -109,6 +111,7 @@ public class ClientServiceImpl implements ClientService{
     }
 
     @Override
+    @Transactional
     public ClientDto asociarCarroARentado(Long clientId, Long rentId) throws ClientNotFoundException, RentNotFoundException {
         Client client = clientRepository.findById(clientId).orElseThrow(() -> new ClientNotFoundException("clientId"));
         Rent rent = rentRepository.findById(rentId).orElseThrow(() -> new RentNotFoundException("rentId"));

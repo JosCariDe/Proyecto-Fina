@@ -1,5 +1,6 @@
 package com.example.carrosCaribenios.entitys;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,7 +35,7 @@ public class Rent {
     @Column(nullable = false)
     private Float precio;
     @ManyToOne
-    @JoinColumn(name = "rentado_id",
-                referencedColumnName = "id")
+    @JoinColumn(name = "cliente_id")
+    @JsonBackReference
     private Client rentadoCliente;
 }

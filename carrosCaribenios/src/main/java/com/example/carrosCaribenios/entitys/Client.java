@@ -1,5 +1,6 @@
 package com.example.carrosCaribenios.entitys;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,6 +17,7 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToMany(mappedBy = "rentadoCliente")
+    @JsonManagedReference
     private List<Rent> carrosRentados;
     @Column(nullable = false)
     private String nombre;
