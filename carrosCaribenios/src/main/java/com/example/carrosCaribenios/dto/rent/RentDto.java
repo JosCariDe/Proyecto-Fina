@@ -1,6 +1,8 @@
 package com.example.carrosCaribenios.dto.rent;
 
+import com.example.carrosCaribenios.dto.client.ClientDto;
 import com.example.carrosCaribenios.entitys.Client;
+import com.example.carrosCaribenios.entitys.Rent;
 import lombok.Builder;
 
 import java.time.LocalDate;

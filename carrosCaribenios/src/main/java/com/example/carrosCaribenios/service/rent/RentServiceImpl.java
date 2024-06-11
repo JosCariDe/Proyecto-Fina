@@ -4,6 +4,7 @@ import com.example.carrosCaribenios.dto.rent.RentDto;
 import com.example.carrosCaribenios.dto.rent.RentMapper;
 import com.example.carrosCaribenios.dto.rent.RentToSaveDto;
 import com.example.carrosCaribenios.entitys.Rent;
+import com.example.carrosCaribenios.exception.ClientNotFoundException;
 import com.example.carrosCaribenios.exception.RentNotFoundException;
 import com.example.carrosCaribenios.repository.RentRepository;
 import jakarta.annotation.PostConstruct;
@@ -213,4 +214,6 @@ public class RentServiceImpl implements RentService{
         }
         return RentMapper.INSTANCE.rentsToRentsDto(rents);
     }
+
+
 }

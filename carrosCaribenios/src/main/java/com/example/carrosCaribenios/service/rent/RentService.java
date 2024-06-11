@@ -2,6 +2,7 @@ package com.example.carrosCaribenios.service.rent;
 
 import com.example.carrosCaribenios.dto.rent.RentDto;
 import com.example.carrosCaribenios.dto.rent.RentToSaveDto;
+import com.example.carrosCaribenios.exception.ClientNotFoundException;
 import com.example.carrosCaribenios.exception.RentNotFoundException;
 
 import java.time.LocalDate;
