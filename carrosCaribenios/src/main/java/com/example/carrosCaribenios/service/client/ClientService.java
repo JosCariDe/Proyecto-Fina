@@ -4,6 +4,7 @@ import com.example.carrosCaribenios.dto.client.ClientDto;
 import com.example.carrosCaribenios.dto.client.ClientToSaveDto;
 import com.example.carrosCaribenios.dto.rent.RentDto;
 import com.example.carrosCaribenios.exception.ClientNotFoundException;
+import com.example.carrosCaribenios.exception.RentNotFoundException;
 
 import java.util.List;
 
@@ -15,5 +16,7 @@ public interface ClientService {
     List<ClientDto> getAllClientes();
 
     List<RentDto> findCarrosRentadosById(Long id) throws ClientNotFoundException;
+
+    ClientDto asociarCarroARentado(Long clientId, Long rentId) throws ClientNotFoundException, RentNotFoundException;
 
 }

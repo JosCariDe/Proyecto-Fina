@@ -3,6 +3,7 @@ package com.example.carrosCaribenios.dto.rent;
 import com.example.carrosCaribenios.entitys.Client;
 import lombok.Builder;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder
@@ -11,8 +12,8 @@ public record RentDto(
         String ciudad,
         String modelo,
         String marca,
-        LocalDateTime fechaInicio,
-        LocalDateTime fechaFinal,
+        LocalDate fechaInicio,
+        LocalDate fechaFinal,
         Float precio,
         Client rentadoCliente
 ) {

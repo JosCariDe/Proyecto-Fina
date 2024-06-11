@@ -4,6 +4,7 @@ import com.example.carrosCaribenios.dto.client.ClientDto;
 import com.example.carrosCaribenios.dto.client.ClientToSaveDto;
 import com.example.carrosCaribenios.dto.rent.RentDto;
 import com.example.carrosCaribenios.exception.ClientNotFoundException;
+import com.example.carrosCaribenios.exception.RentNotFoundException;
 import com.example.carrosCaribenios.service.client.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -77,5 +78,15 @@ public class ClientController {
     public ResponseEntity<List<RentDto>> findCarrosRentadosById(@PathVariable Long id) {
         List<RentDto> rentedCars = clientService.findCarrosRentadosById(id);
         return ResponseEntity.ok(rentedCars);
+    }
+
+    @PostMapping("/{clientId}/rent/{rentId}")
+    public ResponseEntity<ClientDto> asociarCarroARentado(@PathVariable Long clientId, @PathVariable Long rentId) {
+        try {
+            ClientDto updatedClient = clientService.asociarCarroARentado(clientId, rentId);
+            return ResponseEntity.ok(updatedClient);
+        } catch (ClientNotFoundException | RentNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

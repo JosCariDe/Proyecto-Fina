@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -74,7 +75,7 @@ public class RentController {
     }
 
     @GetMapping("/filter")
-    public ResponseEntity<List<RentDto>> filtrarPorCiudadYFechas(@RequestParam String ciudad, @RequestParam LocalDateTime fechaInicio, @RequestParam LocalDateTime fechaFinal) {
+    public ResponseEntity<List<RentDto>> filtrarPorCiudadYFechas(@RequestParam String ciudad, @RequestParam LocalDate fechaInicio, @RequestParam LocalDate fechaFinal) {
         try {
             List<RentDto> filteredRents = rentService.filtrarPorCiudadYFechas(ciudad, fechaInicio, fechaFinal);
             return new ResponseEntity<>(filteredRents, HttpStatus.OK);

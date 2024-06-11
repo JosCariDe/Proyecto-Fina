@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -24,12 +25,12 @@ public class Rent {
     private String marca;
     @Column(nullable = false)
     private String ciudad;
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @Column(nullable = false)
-    private LocalDateTime fechaInicio;
-    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDate fechaInicio;
+    @Temporal(TemporalType.DATE)
     @Column(nullable = false)
-    private LocalDateTime fechaFinal;
+    private LocalDate fechaFinal;
     @Column(nullable = false)
     private Float precio;
     @ManyToOne

@@ -10,6 +10,7 @@ import com.example.carrosCaribenios.entitys.Rent;
 import com.example.carrosCaribenios.exception.ClientNotFoundException;
 import com.example.carrosCaribenios.exception.RentNotFoundException;
 import com.example.carrosCaribenios.repository.ClientRepository;
+import com.example.carrosCaribenios.repository.RentRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,9 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ClientServiceImpl implements ClientService{
+
+    private final ClientRepository clientRepository;
+    private final RentRepository rentRepository;
 
 
     @PostConstruct
@@ -53,8 +57,6 @@ public class ClientServiceImpl implements ClientService{
         clientRepository.saveAll(Arrays.asList(client1, client2, client3));
     }
 
-
-    private final ClientRepository clientRepository;
     @Override
     public ClientDto guardarCliente(ClientToSaveDto clientDto) {
         Client client = ClientMapper.INSTANCE.clientToSaveDtoToClient(clientDto);
@@ -104,5 +106,19 @@ public class ClientServiceImpl implements ClientService{
             throw new RentNotFoundException("No se encontraron Coches para este cliente");
         }
         return RentMapper.INSTANCE.rentsToRentsDto(rents);
+    }
+
+    @Override
+    public ClientDto asociarCarroARentado(Long clientId, Long rentId) throws ClientNotFoundException, RentNotFoundException {
+        Client client = clientRepository.findById(clientId).orElseThrow(() -> new ClientNotFoundException("clientId"));
+        Rent rent = rentRepository.findById(rentId).orElseThrow(() -> new RentNotFoundException("rentId"));
+
+        rent.setRentadoCliente(client);
+        client.getCarrosRentados().add(rent);
+
+        rentRepository.save(rent);
+        clientRepository.save(client);
+
+        return ClientMapper.INSTANCE.clientToClientDto(client);
     }
 }
